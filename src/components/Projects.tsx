@@ -86,7 +86,7 @@ export const Projects = () => {
               metadata={[project.status, project.date.split(' - ')[0]]}
               color={project.color}
               delay={index}
-              avatarType="web"
+              characterType="builder"
               fullDescription={project.description}
               details={project.details}
               technologies={project.technologies}

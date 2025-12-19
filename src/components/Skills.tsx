@@ -109,7 +109,7 @@ export const Skills = () => {
               metadata={[skill.category, `${skill.items.length} items`]}
               color={skill.color}
               delay={index}
-              avatarType="web"
+              characterType="developer"
               fullDescription={skill.description}
               technologies={skill.items}
               detailMetadata={[
