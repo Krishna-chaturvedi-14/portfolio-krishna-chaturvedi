@@ -17,40 +17,45 @@ interface Project {
 
 const projects: Project[] = [
   {
-    id: 'kpi-forecasting',
-    title: 'KPI Time Series Forecasting',
-    icon: <TrendingUp />,
-    shortDescription: 'Network performance prediction',
-    description: 'A sophisticated time-series model using Gradient Boosting Regressor to forecast Key Performance Indicator (KPI) values for network tower nodes. This project enables proactive network management and optimization.',
-    details: [
-      'Developed a time-series model using Gradient Boosting Regressor',
-      'Forecast KPI values for network tower nodes',
-      'Applied advanced data preprocessing and feature engineering',
-      'Built for real-time network performance monitoring',
-    ],
-    technologies: ['Python', 'Scikit-learn', 'Pandas', 'Gradient Boosting'],
-    color: 'red',
-    date: 'Jul 2025 - Present',
-    status: 'In Progress',
+    
+  id: 'kpi-forecasting',
+  title: 'KPI Time Series Forecasting',
+  icon: <TrendingUp />,
+  shortDescription: 'Forecasting network KPIs for proactive performance monitoring',
+  description: 'Designed and deployed a machine learning–based time-series forecasting system to predict key network performance indicators, enabling early detection of anomalies and capacity planning.',
+  details: [
+    'Built a Gradient Boosting regression pipeline for multivariate time-series forecasting',
+    'Engineered lag-based and rolling statistical features to capture temporal trends',
+    'Predicted KPI values for distributed network tower nodes',
+    'Optimized preprocessing and feature selection for real-time inference use cases',
+    'Designed the system with scalability for large-scale network monitoring'
+  ],
+  technologies: ['Python', 'Scikit-learn', 'Pandas', 'Gradient Boosting'],
+  color: 'red',
+  date: 'Jul 2025 – Present',
+  status: 'In Progress'
+
+
   },
   {
-    id: 'motogp',
-    title: 'MotoGP Lap Time Prediction',
-    icon: <Timer />,
-    shortDescription: 'Race analytics with CatBoost',
-    description: 'A high-performance regression model for MotoGP race analytics that predicts rider lap times based on race, track, environmental, and historical performance data. Achieved exceptional accuracy with an RMSE of 0.0786.',
-    details: [
-      'Built predictive model using CatBoost Regressor',
-      'Analyzed race, track, environmental, and historical data',
-      'Designed robust preprocessing pipeline for missing data',
-      'Trained with 3000 iterations and 5-fold cross-validation',
-      'Achieved final RMSE of 0.0786',
-    ],
-    technologies: ['CatBoost', 'Scikit-learn', 'Pandas', 'Python'],
-    color: 'blue',
-    date: 'Jul 2025',
-    status: 'Completed',
-  },
+  id: 'motogp',
+  title: 'MotoGP Lap Time Prediction',
+  icon: <Timer />,
+  shortDescription: 'Predictive race analytics using machine learning',
+  description: 'Developed a high-performance machine learning model to predict MotoGP lap times by analyzing race, track, and environmental data, enabling deeper performance insights.',
+  details: [
+    'Implemented CatBoost regression for handling heterogeneous race data',
+    'Analyzed rider performance across track conditions and environmental variables',
+    'Designed a robust preprocessing pipeline for missing and noisy data',
+    'Trained models using 5-fold cross-validation with 3000+ iterations',
+    'Achieved a final RMSE of 0.0786, indicating high predictive accuracy'
+  ],
+  technologies: ['CatBoost', 'Scikit-learn', 'Pandas', 'Python'],
+  color: 'blue',
+  date: 'Jul 2025',
+  status: 'Completed'
+}
+
 ];
 
 export const Projects = () => {
