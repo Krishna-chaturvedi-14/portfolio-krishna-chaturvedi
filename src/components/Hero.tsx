@@ -1,6 +1,7 @@
 import { motion, useAnimation } from 'framer-motion';
 import { ArrowDown, Mail, Briefcase } from 'lucide-react';
 import { PersonalAvatar } from './avatars/PersonalAvatar';
+import { HeroBackground } from './HeroBackground';
 import { useEffect, useState } from 'react';
 
 // Typing animation component
@@ -102,91 +103,8 @@ export const Hero = () => {
 
   return (
     <div className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden">
-      {/* Atmospheric Background */}
-      <div className="absolute inset-0 overflow-hidden">
-        {/* Deep gradient layers */}
-        <div className="absolute inset-0 bg-gradient-to-b from-primary/10 via-background to-background" />
-        <div className="absolute inset-0 bg-gradient-to-r from-accent/5 via-transparent to-success/5" />
-        
-        {/* Radial glows */}
-        <div className="absolute top-1/4 left-1/4 w-[600px] h-[600px] bg-accent/8 rounded-full blur-[150px] animate-pulse" />
-        <div className="absolute bottom-1/4 right-1/4 w-[500px] h-[500px] bg-primary/10 rounded-full blur-[120px]" />
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-success/5 rounded-full blur-[200px]" />
-
-        {/* Grid pattern - subtle technical feel */}
-        <svg className="absolute inset-0 w-full h-full opacity-[0.02]">
-          <defs>
-            <pattern id="heroGrid" width="80" height="80" patternUnits="userSpaceOnUse">
-              <path d="M 80 0 L 0 0 0 80" fill="none" stroke="currentColor" strokeWidth="1" className="text-foreground" />
-            </pattern>
-          </defs>
-          <rect width="100%" height="100%" fill="url(#heroGrid)" />
-        </svg>
-
-        {/* Floating LEGO blocks - environment depth */}
-        <motion.div
-          animate={{ 
-            y: [0, -25, 0],
-            rotate: [0, 5, 0],
-          }}
-          transition={{ duration: 12, repeat: Infinity, ease: 'easeInOut' }}
-          className="absolute top-[15%] left-[8%] w-16 h-10 bg-gradient-to-br from-accent/20 to-accent/5 rounded-sm border border-accent/10"
-        />
-        <motion.div
-          animate={{ 
-            y: [0, 20, 0],
-            rotate: [0, -3, 0],
-          }}
-          transition={{ duration: 10, repeat: Infinity, ease: 'easeInOut', delay: 2 }}
-          className="absolute top-[25%] right-[12%] w-20 h-12 bg-gradient-to-br from-success/15 to-success/5 rounded-sm border border-success/10"
-        />
-        <motion.div
-          animate={{ 
-            y: [0, -15, 0],
-            x: [0, 10, 0],
-          }}
-          transition={{ duration: 14, repeat: Infinity, ease: 'easeInOut', delay: 1 }}
-          className="absolute bottom-[30%] left-[15%] w-14 h-8 bg-gradient-to-br from-primary/20 to-primary/5 rounded-sm border border-primary/10"
-        />
-        <motion.div
-          animate={{ 
-            y: [0, 18, 0],
-            rotate: [0, 8, 0],
-          }}
-          transition={{ duration: 11, repeat: Infinity, ease: 'easeInOut', delay: 3 }}
-          className="absolute bottom-[25%] right-[10%] w-18 h-10 bg-gradient-to-br from-accent/15 to-accent/5 rounded-sm border border-accent/10"
-        />
-
-        {/* Particle dots */}
-        {[...Array(12)].map((_, i) => (
-          <motion.div
-            key={i}
-            animate={{
-              y: [0, -30, 0],
-              opacity: [0.2, 0.5, 0.2],
-            }}
-            transition={{
-              duration: 6 + i * 0.5,
-              repeat: Infinity,
-              ease: 'easeInOut',
-              delay: i * 0.3,
-            }}
-            className="absolute w-1 h-1 rounded-full bg-foreground/30"
-            style={{
-              left: `${10 + i * 7}%`,
-              top: `${20 + (i % 4) * 15}%`,
-            }}
-          />
-        ))}
-
-        {/* Subtle noise overlay */}
-        <div 
-          className="absolute inset-0 opacity-[0.02]"
-          style={{
-            backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E")`,
-          }}
-        />
-      </div>
+      {/* Atmospheric Cityscape Background */}
+      <HeroBackground />
 
       {/* Floating Avatar - Top area */}
       <motion.div

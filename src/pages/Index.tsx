@@ -8,10 +8,14 @@ import { Experience } from '@/components/Experience';
 import { Contact } from '@/components/Contact';
 import { BackgroundSystem } from '@/components/BackgroundSystem';
 import { SectionDivider } from '@/components/SectionDivider';
+import { CustomCursor } from '@/components/CustomCursor';
 
 const Index = () => {
   return (
     <div className="relative min-h-screen bg-background snap-container no-scrollbar overflow-y-auto">
+      {/* Custom LEGO Spider-Man Cursor */}
+      <CustomCursor />
+
       {/* Navbar */}
       <Navbar />
 
