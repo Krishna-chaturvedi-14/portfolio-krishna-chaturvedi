@@ -2,8 +2,7 @@ import { ReactNode, useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { LegoStuds } from './LegoStuds';
 import { Eye, X, ExternalLink, Github } from 'lucide-react';
-import { WebAvatar } from './avatars/WebAvatar';
-import { ControlAvatar } from './avatars/ControlAvatar';
+import { LegoCharacter } from './avatars/LegoCharacter';
 
 interface PlayerCardProps {
   title: string;
@@ -12,7 +11,7 @@ interface PlayerCardProps {
   metadata?: string[];
   color: 'red' | 'yellow' | 'blue' | 'green' | 'orange';
   delay?: number;
-  avatarType?: 'web' | 'control';
+  characterType?: 'developer' | 'engineer' | 'builder' | 'analyst';
   // Detail view props
   fullDescription?: string;
   details?: string[];
@@ -23,34 +22,34 @@ interface PlayerCardProps {
 
 const colorClasses = {
   red: {
-    bg: 'bg-accent',
+    bg: 'bg-accent/90',
     border: 'border-accent',
     text: 'text-accent-foreground',
-    shadow: 'shadow-lego',
+    glow: 'shadow-[0_0_30px_-5px_hsl(var(--accent)/0.3)]',
   },
   yellow: {
-    bg: 'bg-success',
+    bg: 'bg-success/90',
     border: 'border-success',
     text: 'text-success-foreground',
-    shadow: 'shadow-lego',
+    glow: 'shadow-[0_0_30px_-5px_hsl(var(--success)/0.3)]',
   },
   blue: {
-    bg: 'bg-primary',
+    bg: 'bg-primary/90',
     border: 'border-primary',
     text: 'text-primary-foreground',
-    shadow: 'shadow-lego',
+    glow: 'shadow-[0_0_30px_-5px_hsl(var(--primary)/0.3)]',
   },
   green: {
-    bg: 'bg-success',
+    bg: 'bg-success/90',
     border: 'border-success',
     text: 'text-success-foreground',
-    shadow: 'shadow-lego',
+    glow: 'shadow-[0_0_30px_-5px_hsl(var(--success)/0.3)]',
   },
   orange: {
-    bg: 'bg-accent',
+    bg: 'bg-accent/90',
     border: 'border-accent',
     text: 'text-accent-foreground',
-    shadow: 'shadow-lego',
+    glow: 'shadow-[0_0_30px_-5px_hsl(var(--accent)/0.3)]',
   },
 };
 
@@ -61,7 +60,7 @@ export const PlayerCard = ({
   metadata = [],
   color,
   delay = 0,
-  avatarType = 'web',
+  characterType = 'developer',
   fullDescription,
   details = [],
   technologies = [],
@@ -96,8 +95,6 @@ export const PlayerCard = ({
     return () => document.removeEventListener('keydown', handleEscape);
   }, [isExpanded]);
 
-  const Avatar = avatarType === 'web' ? WebAvatar : ControlAvatar;
-
   return (
     <>
       <motion.div
@@ -118,24 +115,24 @@ export const PlayerCard = ({
             scale: isHovered ? 1.02 : 1,
           }}
           transition={{ type: 'spring', stiffness: 400, damping: 25 }}
-          className={`relative overflow-hidden rounded-md ${colors.bg} ${colors.text} ${colors.shadow} cursor-pointer transition-shadow duration-200`}
+          className={`relative overflow-hidden rounded-md ${colors.bg} ${colors.text} card-depth cursor-pointer transition-all duration-300 ${isHovered ? colors.glow : ''}`}
           style={{ transformStyle: 'preserve-3d' }}
         >
-          <LegoStuds rows={1} cols={3} color="rgba(255,255,255,0.2)" />
+          <LegoStuds rows={1} cols={3} color="rgba(255,255,255,0.15)" />
           
           {/* Card Content */}
           <div className="p-5 pt-8">
-            {/* Animated Avatar */}
+            {/* LEGO Character Avatar */}
             <motion.div 
               className="mb-3 flex items-center justify-center"
               animate={{
                 y: isHovered ? -4 : 0,
-                scale: isHovered ? 1.1 : 1,
+                scale: isHovered ? 1.15 : 1,
               }}
               transition={{ type: 'spring', stiffness: 300, damping: 20 }}
             >
-              <div className="w-14 h-14 rounded-md bg-background/20 backdrop-blur-sm flex items-center justify-center">
-                <Avatar isHovered={isHovered} size={36} />
+              <div className="w-14 h-14 rounded-md bg-background/30 backdrop-blur-sm flex items-center justify-center border border-white/10">
+                <LegoCharacter type={characterType} isHovered={isHovered} size={44} />
               </div>
             </motion.div>
 
@@ -235,19 +232,19 @@ export const PlayerCard = ({
                 stiffness: 300,
               }}
               onClick={(e) => e.stopPropagation()}
-              className={`relative w-full max-w-2xl max-h-[85vh] overflow-hidden rounded-lg ${colors.shadow}`}
+              className={`relative w-full max-w-2xl max-h-[85vh] overflow-hidden rounded-lg card-depth ${colors.glow}`}
               style={{ transformStyle: 'preserve-3d' }}
             >
               {/* Header - same color as original card */}
               <div className={`relative p-6 ${colors.bg} ${colors.text}`}>
-                <LegoStuds rows={1} cols={5} color="rgba(255,255,255,0.2)" />
+                <LegoStuds rows={1} cols={5} color="rgba(255,255,255,0.15)" />
                 
                 <motion.button
                   initial={{ opacity: 0, scale: 0.8 }}
                   animate={{ opacity: 1, scale: 1 }}
                   transition={{ delay: 0.2 }}
                   onClick={() => setIsExpanded(false)}
-                  className="absolute top-4 right-4 p-2 rounded-md bg-background/20 hover:bg-background/30 transition-colors z-10"
+                  className="absolute top-4 right-4 p-2 rounded-md bg-background/20 hover:bg-background/30 transition-colors z-10 border border-white/10"
                   aria-label="Close"
                 >
                   <X size={18} />
@@ -255,7 +252,7 @@ export const PlayerCard = ({
 
                 <div className="flex items-center gap-4 pt-4">
                   <motion.div 
-                    className="w-16 h-16 rounded-lg bg-background/20 flex items-center justify-center"
+                    className="w-16 h-16 rounded-lg bg-background/30 flex items-center justify-center border border-white/10"
                     animate={{
                       y: [0, -4, 0],
                     }}
@@ -265,7 +262,7 @@ export const PlayerCard = ({
                       ease: 'easeInOut',
                     }}
                   >
-                    <Avatar isHovered={true} size={44} />
+                    <LegoCharacter type={characterType} isHovered={true} size={52} />
                   </motion.div>
                   <div>
                     <motion.h2 

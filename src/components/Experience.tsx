@@ -123,7 +123,7 @@ export const Experience = () => {
               metadata={[item.organization, item.date.split(' - ')[0]]}
               color={item.color}
               delay={index}
-              avatarType="control"
+              characterType="engineer"
               fullDescription={item.description}
               details={item.details}
               technologies={item.technologies}

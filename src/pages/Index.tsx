@@ -6,6 +6,8 @@ import { Skills } from '@/components/Skills';
 import { Projects } from '@/components/Projects';
 import { Experience } from '@/components/Experience';
 import { Contact } from '@/components/Contact';
+import { BackgroundSystem } from '@/components/BackgroundSystem';
+import { SectionDivider } from '@/components/SectionDivider';
 
 const Index = () => {
   return (
@@ -13,32 +15,42 @@ const Index = () => {
       {/* Navbar */}
       <Navbar />
 
-      {/* Background Pattern */}
-      <div className="fixed inset-0 baseplate-pattern opacity-50 pointer-events-none" />
+      {/* Layered Background System */}
+      <BackgroundSystem />
 
       {/* Main Content */}
       <main className="relative z-10">
-        <Section id="hero">
+        <Section id="hero" className="bg-gradient-to-b from-transparent to-secondary/10">
           <Hero />
         </Section>
 
-        <Section id="about">
+        <SectionDivider variant="subtle" />
+
+        <Section id="about" className="bg-gradient-to-b from-secondary/10 via-transparent to-secondary/5">
           <About />
         </Section>
 
-        <Section id="skills">
+        <SectionDivider variant="accent" />
+
+        <Section id="skills" className="bg-gradient-to-b from-secondary/5 via-primary/5 to-transparent">
           <Skills />
         </Section>
 
-        <Section id="projects">
+        <SectionDivider />
+
+        <Section id="projects" className="bg-gradient-to-b from-transparent via-secondary/10 to-accent/5">
           <Projects />
         </Section>
 
-        <Section id="experience">
+        <SectionDivider variant="accent" />
+
+        <Section id="experience" className="bg-gradient-to-b from-accent/5 via-transparent to-secondary/10">
           <Experience />
         </Section>
 
-        <Section id="contact" fullHeight={false}>
+        <SectionDivider variant="subtle" />
+
+        <Section id="contact" fullHeight={false} className="bg-gradient-to-b from-secondary/10 to-background">
           <Contact />
         </Section>
       </main>
