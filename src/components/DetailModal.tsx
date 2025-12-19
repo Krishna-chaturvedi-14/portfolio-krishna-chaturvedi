@@ -17,11 +17,11 @@ interface DetailModalProps {
 }
 
 const colorClasses = {
-  red: 'bg-lego-red text-lego-white border-lego-red',
-  yellow: 'bg-lego-yellow text-lego-black border-lego-yellow',
-  blue: 'bg-lego-blue text-lego-white border-lego-blue',
-  green: 'bg-lego-green text-lego-white border-lego-green',
-  orange: 'bg-lego-orange text-lego-white border-lego-orange',
+  red: 'bg-accent text-accent-foreground border-accent',
+  yellow: 'bg-success text-success-foreground border-success',
+  blue: 'bg-primary text-primary-foreground border-primary',
+  green: 'bg-success text-success-foreground border-success',
+  orange: 'bg-accent text-accent-foreground border-accent',
 };
 
 export const DetailModal = ({
@@ -63,40 +63,40 @@ export const DetailModal = ({
           onClick={onClose}
         >
           {/* Backdrop */}
-          <div className="absolute inset-0 bg-foreground/60 backdrop-blur-sm" />
+          <div className="absolute inset-0 bg-background/80 backdrop-blur-sm" />
 
           {/* Modal */}
           <motion.div
-            initial={{ opacity: 0, scale: 0.9, y: 30 }}
+            initial={{ opacity: 0, scale: 0.95, y: 20 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
-            exit={{ opacity: 0, scale: 0.9, y: 30 }}
-            transition={{ type: 'spring', damping: 25, stiffness: 300 }}
+            exit={{ opacity: 0, scale: 0.95, y: 20 }}
+            transition={{ type: 'spring', damping: 30, stiffness: 400 }}
             onClick={(e) => e.stopPropagation()}
-            className="relative w-full max-w-2xl max-h-[85vh] overflow-hidden bg-card rounded-2xl shadow-2xl"
+            className="relative w-full max-w-2xl max-h-[85vh] overflow-hidden bg-card rounded-lg shadow-2xl border border-border"
           >
             {/* Header */}
             <div className={`relative p-6 ${colorClasses[color]}`}>
-              <LegoStuds rows={1} cols={5} color="rgba(255,255,255,0.3)" />
+              <LegoStuds rows={1} cols={5} color="rgba(255,255,255,0.2)" />
               
               <button
                 onClick={onClose}
-                className="absolute top-4 right-4 p-2 rounded-lg bg-lego-white/20 hover:bg-lego-white/30 transition-colors"
+                className="absolute top-4 right-4 p-2 rounded-md bg-background/20 hover:bg-background/30 transition-colors"
                 aria-label="Close modal"
               >
-                <X size={20} />
+                <X size={18} />
               </button>
 
               <div className="flex items-center gap-4 pt-4">
-                <div className="w-16 h-16 rounded-xl bg-lego-white/20 flex items-center justify-center text-3xl">
+                <div className="w-14 h-14 rounded-lg bg-background/20 flex items-center justify-center text-2xl">
                   {icon}
                 </div>
-                <h2 className="font-display text-lg leading-relaxed">{title}</h2>
+                <h2 className="font-display text-xl leading-snug font-semibold">{title}</h2>
               </div>
 
               {metadata.length > 0 && (
                 <div className="flex flex-wrap gap-3 mt-4">
                   {metadata.map((item, i) => (
-                    <div key={i} className="text-sm font-body opacity-90">
+                    <div key={i} className="text-sm font-mono opacity-90">
                       <span className="opacity-70">{item.label}:</span> {item.value}
                     </div>
                   ))}
@@ -110,11 +110,11 @@ export const DetailModal = ({
 
               {details.length > 0 && (
                 <div className="mb-6">
-                  <h4 className="font-display text-xs text-muted-foreground mb-3">HIGHLIGHTS</h4>
+                  <h4 className="font-display text-sm text-muted-foreground mb-3 font-semibold uppercase tracking-wide">Highlights</h4>
                   <ul className="space-y-2">
                     {details.map((detail, i) => (
                       <li key={i} className="flex items-start gap-3 font-body text-sm text-foreground">
-                        <div className="w-2 h-2 rounded-full bg-primary mt-2 flex-shrink-0" />
+                        <div className="w-1.5 h-1.5 rounded-full bg-accent mt-2 flex-shrink-0" />
                         {detail}
                       </li>
                     ))}
@@ -124,12 +124,12 @@ export const DetailModal = ({
 
               {technologies.length > 0 && (
                 <div className="mb-6">
-                  <h4 className="font-display text-xs text-muted-foreground mb-3">TECH STACK</h4>
+                  <h4 className="font-display text-sm text-muted-foreground mb-3 font-semibold uppercase tracking-wide">Tech Stack</h4>
                   <div className="flex flex-wrap gap-2">
                     {technologies.map((tech, i) => (
                       <span
                         key={i}
-                        className="px-3 py-1.5 bg-muted text-foreground rounded-lg font-body text-sm"
+                        className="px-3 py-1.5 bg-muted text-foreground rounded-md font-mono text-sm"
                       >
                         {tech}
                       </span>
@@ -146,9 +146,9 @@ export const DetailModal = ({
                       href={link.url}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center gap-2 px-4 py-2 bg-primary text-primary-foreground rounded-lg font-body text-sm font-medium hover:opacity-90 transition-opacity shadow-lego hover:-translate-y-0.5"
+                      className="inline-flex items-center gap-2 px-4 py-2 bg-accent text-accent-foreground rounded-md font-body text-sm font-medium hover:opacity-90 transition-opacity shadow-lego hover:-translate-y-0.5"
                     >
-                      {link.type === 'github' ? <Github size={16} /> : <ExternalLink size={16} />}
+                      {link.type === 'github' ? <Github size={14} /> : <ExternalLink size={14} />}
                       {link.label}
                     </a>
                   ))}
@@ -157,7 +157,7 @@ export const DetailModal = ({
             </div>
 
             {/* Footer decoration */}
-            <div className="h-3 bg-muted baseplate-pattern" />
+            <div className="h-2 bg-muted baseplate-pattern" />
           </motion.div>
         </motion.div>
       )}

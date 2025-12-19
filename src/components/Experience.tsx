@@ -100,24 +100,24 @@ export const Experience = () => {
       <div className="max-w-6xl mx-auto w-full">
         {/* Section Header */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           className="text-center mb-12"
         >
-          <span className="inline-block px-4 py-2 bg-lego-yellow/20 text-secondary-foreground rounded-lg font-body text-sm font-medium mb-4">
-            💼 Experience & Achievements
+          <span className="inline-block px-4 py-2 bg-success/10 text-success rounded-md font-mono text-sm font-medium mb-4">
+            Experience & Achievements
           </span>
-          <h2 className="font-display text-xl md:text-2xl text-foreground mb-4">
-            My Journey So Far
+          <h2 className="font-display text-2xl md:text-3xl text-foreground mb-4 font-bold">
+            Professional Journey
           </h2>
           <p className="font-body text-muted-foreground max-w-xl mx-auto">
-            Every role and achievement is a brick in my professional foundation.
+            Each role is a building block in my professional foundation.
           </p>
         </motion.div>
 
         {/* Experience Grid */}
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-5">
           {experiences.map((item, index) => (
             <PlayerCard
               key={item.id}

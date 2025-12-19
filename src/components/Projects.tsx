@@ -63,24 +63,24 @@ export const Projects = () => {
       <div className="max-w-5xl mx-auto w-full">
         {/* Section Header */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           className="text-center mb-12"
         >
-          <span className="inline-block px-4 py-2 bg-lego-red/10 text-primary rounded-lg font-body text-sm font-medium mb-4">
-            🚀 Projects
+          <span className="inline-block px-4 py-2 bg-accent/10 text-accent rounded-md font-mono text-sm font-medium mb-4">
+            Projects
           </span>
-          <h2 className="font-display text-xl md:text-2xl text-foreground mb-4">
-            What I've Built
+          <h2 className="font-display text-2xl md:text-3xl text-foreground mb-4 font-bold">
+            Featured Work
           </h2>
           <p className="font-body text-muted-foreground max-w-xl mx-auto">
-            Each project is a building block of my journey. Hover to preview, click to explore.
+            Each project represents a building block of my engineering journey.
           </p>
         </motion.div>
 
         {/* Projects Grid */}
-        <div className="grid md:grid-cols-2 gap-6">
+        <div className="grid md:grid-cols-2 gap-5">
           {projects.map((project, index) => (
             <PlayerCard
               key={project.id}
@@ -100,12 +100,12 @@ export const Projects = () => {
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
-          transition={{ delay: 0.4 }}
+          transition={{ delay: 0.3 }}
           className="mt-8 text-center"
         >
-          <div className="inline-block px-6 py-4 bg-muted/50 rounded-xl border-2 border-dashed border-border">
+          <div className="inline-block px-6 py-4 bg-muted/50 rounded-lg border border-dashed border-border">
             <p className="font-body text-muted-foreground">
-              🧱 More projects coming soon...
+              More projects coming soon...
             </p>
           </div>
         </motion.div>
