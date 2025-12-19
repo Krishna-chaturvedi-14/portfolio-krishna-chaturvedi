@@ -15,39 +15,39 @@ interface PlayerCardProps {
 
 const colorClasses = {
   red: {
-    bg: 'bg-lego-red',
-    border: 'border-lego-red',
-    text: 'text-lego-white',
-    shadow: 'shadow-[0_6px_0_hsl(0,60%,40%)]',
-    hoverShadow: 'hover:shadow-[0_8px_0_hsl(0,60%,35%)]',
+    bg: 'bg-accent',
+    border: 'border-accent',
+    text: 'text-accent-foreground',
+    shadow: 'shadow-lego',
+    hoverShadow: 'hover:shadow-lego-hover',
   },
   yellow: {
-    bg: 'bg-lego-yellow',
-    border: 'border-lego-yellow',
-    text: 'text-lego-black',
-    shadow: 'shadow-[0_6px_0_hsl(45,80%,40%)]',
-    hoverShadow: 'hover:shadow-[0_8px_0_hsl(45,80%,35%)]',
+    bg: 'bg-success',
+    border: 'border-success',
+    text: 'text-success-foreground',
+    shadow: 'shadow-lego',
+    hoverShadow: 'hover:shadow-lego-hover',
   },
   blue: {
-    bg: 'bg-lego-blue',
-    border: 'border-lego-blue',
-    text: 'text-lego-white',
-    shadow: 'shadow-[0_6px_0_hsl(210,70%,35%)]',
-    hoverShadow: 'hover:shadow-[0_8px_0_hsl(210,70%,30%)]',
+    bg: 'bg-primary',
+    border: 'border-primary',
+    text: 'text-primary-foreground',
+    shadow: 'shadow-lego',
+    hoverShadow: 'hover:shadow-lego-hover',
   },
   green: {
-    bg: 'bg-lego-green',
-    border: 'border-lego-green',
-    text: 'text-lego-white',
-    shadow: 'shadow-[0_6px_0_hsl(145,50%,30%)]',
-    hoverShadow: 'hover:shadow-[0_8px_0_hsl(145,50%,25%)]',
+    bg: 'bg-success',
+    border: 'border-success',
+    text: 'text-success-foreground',
+    shadow: 'shadow-lego',
+    hoverShadow: 'hover:shadow-lego-hover',
   },
   orange: {
-    bg: 'bg-lego-orange',
-    border: 'border-lego-orange',
-    text: 'text-lego-white',
-    shadow: 'shadow-[0_6px_0_hsl(25,75%,40%)]',
-    hoverShadow: 'hover:shadow-[0_8px_0_hsl(25,75%,35%)]',
+    bg: 'bg-accent',
+    border: 'border-accent',
+    text: 'text-accent-foreground',
+    shadow: 'shadow-lego',
+    hoverShadow: 'hover:shadow-lego-hover',
   },
 };
 
@@ -65,54 +65,54 @@ export const PlayerCard = ({
 
   return (
     <motion.div
-      initial={{ opacity: 0, y: 30, scale: 0.95 }}
+      initial={{ opacity: 0, y: 20, scale: 0.98 }}
       whileInView={{ opacity: 1, y: 0, scale: 1 }}
       viewport={{ once: true }}
-      transition={{ duration: 0.5, delay: delay * 0.1 }}
+      transition={{ duration: 0.4, delay: delay * 0.08 }}
       className="perspective-1000"
     >
       <motion.div
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
         animate={{
-          rotateY: isHovered ? 8 : 0,
-          rotateX: isHovered ? -5 : 0,
-          y: isHovered ? -8 : 0,
-          scale: isHovered ? 1.02 : 1,
+          rotateY: isHovered ? 6 : 0,
+          rotateX: isHovered ? -3 : 0,
+          y: isHovered ? -4 : 0,
+          scale: isHovered ? 1.01 : 1,
         }}
-        transition={{ type: 'spring', stiffness: 300, damping: 20 }}
-        className={`relative overflow-hidden rounded-xl ${colors.bg} ${colors.text} ${colors.shadow} ${colors.hoverShadow} cursor-pointer transition-shadow duration-300`}
+        transition={{ type: 'spring', stiffness: 400, damping: 25 }}
+        className={`relative overflow-hidden rounded-md ${colors.bg} ${colors.text} ${colors.shadow} ${colors.hoverShadow} cursor-pointer transition-shadow duration-200`}
         style={{ transformStyle: 'preserve-3d' }}
       >
-        <LegoStuds rows={1} cols={3} color="rgba(255,255,255,0.4)" />
+        <LegoStuds rows={1} cols={3} color="rgba(255,255,255,0.2)" />
         
         {/* Card Content */}
-        <div className="p-6 pt-10">
+        <div className="p-5 pt-8">
           {/* Icon */}
-          <div className="mb-4 flex items-center justify-center">
-            <div className="w-16 h-16 rounded-lg bg-lego-white/20 backdrop-blur-sm flex items-center justify-center text-3xl">
+          <div className="mb-3 flex items-center justify-center">
+            <div className="w-14 h-14 rounded-md bg-background/20 backdrop-blur-sm flex items-center justify-center text-2xl">
               {icon}
             </div>
           </div>
 
           {/* Title */}
-          <h3 className="font-display text-sm text-center mb-2 leading-relaxed">{title}</h3>
+          <h3 className="font-display text-sm text-center mb-2 font-semibold leading-snug">{title}</h3>
 
           {/* Hover Content */}
           <motion.div
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: isHovered ? 1 : 0, height: isHovered ? 'auto' : 0 }}
-            transition={{ duration: 0.3 }}
+            transition={{ duration: 0.25 }}
             className="overflow-hidden"
           >
             <p className="font-body text-sm opacity-90 mb-3 text-center">{shortDescription}</p>
             
             {metadata.length > 0 && (
-              <div className="flex flex-wrap gap-1 justify-center mb-4">
+              <div className="flex flex-wrap gap-1 justify-center mb-3">
                 {metadata.slice(0, 3).map((tag, i) => (
                   <span
                     key={i}
-                    className="px-2 py-1 text-xs font-body bg-lego-white/20 rounded-md"
+                    className="px-2 py-1 text-xs font-mono bg-background/20 rounded"
                   >
                     {tag}
                   </span>
@@ -125,16 +125,16 @@ export const PlayerCard = ({
                 e.stopPropagation();
                 onViewDetails();
               }}
-              className="w-full py-2 px-4 bg-lego-white/30 hover:bg-lego-white/40 rounded-md font-body text-sm font-medium transition-colors flex items-center justify-center gap-2"
+              className="w-full py-2 px-4 bg-background/30 hover:bg-background/40 rounded font-body text-sm font-medium transition-colors flex items-center justify-center gap-2"
             >
-              <Eye size={16} />
+              <Eye size={14} />
               View Details
             </button>
           </motion.div>
         </div>
 
         {/* Bottom decoration */}
-        <div className="h-2 bg-lego-white/10" />
+        <div className="h-1.5 bg-background/10" />
       </motion.div>
     </motion.div>
   );

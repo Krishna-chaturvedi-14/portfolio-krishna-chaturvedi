@@ -86,24 +86,24 @@ export const Skills = () => {
       <div className="max-w-6xl mx-auto w-full">
         {/* Section Header */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           className="text-center mb-12"
         >
-          <span className="inline-block px-4 py-2 bg-lego-green/10 text-success rounded-lg font-body text-sm font-medium mb-4">
-            🎯 Skills
+          <span className="inline-block px-4 py-2 bg-success/10 text-success rounded-md font-mono text-sm font-medium mb-4">
+            Skills
           </span>
-          <h2 className="font-display text-xl md:text-2xl text-foreground mb-4">
-            My Tech Stack
+          <h2 className="font-display text-2xl md:text-3xl text-foreground mb-4 font-bold">
+            Tech Stack
           </h2>
           <p className="font-body text-muted-foreground max-w-xl mx-auto">
-            Hover over each brick to see what's inside. Click "View Details" for the full picture.
+            Hover over each block to preview. Click "View Details" for more info.
           </p>
         </motion.div>
 
         {/* Skills Grid */}
-        <div className="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-6">
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-5">
           {skills.map((skill, index) => (
             <PlayerCard
               key={skill.id}

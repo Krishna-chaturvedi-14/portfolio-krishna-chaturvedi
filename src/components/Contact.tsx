@@ -6,22 +6,22 @@ import { toast } from '@/hooks/use-toast';
 
 const socialLinks = [
   {
-    icon: <Linkedin size={24} />,
+    icon: <Linkedin size={22} />,
     label: 'LinkedIn',
     href: 'https://linkedin.com/in/Krishna-chaturvedi-14',
-    color: 'bg-lego-blue',
+    color: 'bg-success',
   },
   {
-    icon: <Github size={24} />,
+    icon: <Github size={22} />,
     label: 'GitHub',
     href: 'https://github.com/Krishna-chaturvedi-14',
-    color: 'bg-lego-black',
+    color: 'bg-muted',
   },
   {
-    icon: <Mail size={24} />,
+    icon: <Mail size={22} />,
     label: 'Email',
     href: 'mailto:krishna14chaturvedi@gmail.com',
-    color: 'bg-lego-red',
+    color: 'bg-accent',
   },
 ];
 
@@ -30,10 +30,9 @@ export const Contact = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // In a real app, this would send to a backend
     toast({
-      title: "Message sent! 🧱",
-      description: "Thanks for reaching out. I'll get back to you soon!",
+      title: "Message sent!",
+      description: "Thanks for reaching out. I'll get back to you soon.",
     });
     setFormState({ name: '', email: '', message: '' });
   };
@@ -43,40 +42,40 @@ export const Contact = () => {
       <div className="max-w-5xl mx-auto w-full">
         {/* Section Header */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           className="text-center mb-12"
         >
-          <span className="inline-block px-4 py-2 bg-lego-orange/10 text-lego-orange rounded-lg font-body text-sm font-medium mb-4">
-            📬 Contact
+          <span className="inline-block px-4 py-2 bg-accent/10 text-accent rounded-md font-mono text-sm font-medium mb-4">
+            Contact
           </span>
-          <h2 className="font-display text-xl md:text-2xl text-foreground mb-4">
-            Let's Build Together
+          <h2 className="font-display text-2xl md:text-3xl text-foreground mb-4 font-bold">
+            Get In Touch
           </h2>
           <p className="font-body text-muted-foreground max-w-xl mx-auto">
-            Have a project in mind? Want to collaborate? Drop me a message!
+            Have a project in mind? Let's collaborate.
           </p>
         </motion.div>
 
         <div className="grid md:grid-cols-2 gap-8">
           {/* Contact Info */}
           <motion.div
-            initial={{ opacity: 0, x: -30 }}
+            initial={{ opacity: 0, x: -24 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            className="space-y-6"
+            className="space-y-5"
           >
             {/* Contact Card */}
-            <div className="relative bg-lego-green rounded-2xl p-8 shadow-lego text-lego-white">
-              <LegoStuds rows={1} cols={4} color="rgba(255,255,255,0.3)" />
+            <div className="relative bg-success rounded-lg p-8 shadow-lego text-success-foreground">
+              <LegoStuds rows={1} cols={4} color="rgba(255,255,255,0.2)" />
               
-              <div className="pt-4 space-y-6">
-                <h3 className="font-display text-sm mb-6">GET IN TOUCH</h3>
+              <div className="pt-4 space-y-5">
+                <h3 className="font-display text-lg mb-6 font-semibold">Contact Info</h3>
 
                 <div className="flex items-center gap-4">
-                  <div className="w-12 h-12 rounded-lg bg-lego-white/20 flex items-center justify-center">
-                    <Mail size={20} />
+                  <div className="w-11 h-11 rounded-md bg-background/20 flex items-center justify-center">
+                    <Mail size={18} />
                   </div>
                   <div>
                     <p className="font-body text-sm opacity-70">Email</p>
@@ -87,8 +86,8 @@ export const Contact = () => {
                 </div>
 
                 <div className="flex items-center gap-4">
-                  <div className="w-12 h-12 rounded-lg bg-lego-white/20 flex items-center justify-center">
-                    <Phone size={20} />
+                  <div className="w-11 h-11 rounded-md bg-background/20 flex items-center justify-center">
+                    <Phone size={18} />
                   </div>
                   <div>
                     <p className="font-body text-sm opacity-70">Phone</p>
@@ -99,8 +98,8 @@ export const Contact = () => {
                 </div>
 
                 <div className="flex items-center gap-4">
-                  <div className="w-12 h-12 rounded-lg bg-lego-white/20 flex items-center justify-center">
-                    <MapPin size={20} />
+                  <div className="w-11 h-11 rounded-md bg-background/20 flex items-center justify-center">
+                    <MapPin size={18} />
                   </div>
                   <div>
                     <p className="font-body text-sm opacity-70">Location</p>
@@ -111,19 +110,19 @@ export const Contact = () => {
             </div>
 
             {/* Social Links */}
-            <div className="flex gap-4">
+            <div className="flex gap-3">
               {socialLinks.map((link, i) => (
                 <motion.a
                   key={link.label}
                   href={link.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  initial={{ opacity: 0, y: 20 }}
+                  initial={{ opacity: 0, y: 16 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
-                  transition={{ delay: i * 0.1 }}
-                  whileHover={{ y: -4 }}
-                  className={`w-14 h-14 ${link.color} text-lego-white rounded-xl flex items-center justify-center shadow-lego transition-transform`}
+                  transition={{ delay: i * 0.08 }}
+                  whileHover={{ y: -2 }}
+                  className={`w-12 h-12 ${link.color} text-foreground rounded-lg flex items-center justify-center shadow-lego transition-transform`}
                   aria-label={link.label}
                 >
                   {link.icon}
@@ -134,15 +133,15 @@ export const Contact = () => {
 
           {/* Contact Form */}
           <motion.div
-            initial={{ opacity: 0, x: 30 }}
+            initial={{ opacity: 0, x: 24 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
           >
-            <form onSubmit={handleSubmit} className="bg-card rounded-2xl p-8 shadow-card border border-border">
-              <div className="space-y-6">
+            <form onSubmit={handleSubmit} className="bg-card rounded-lg p-8 shadow-card border border-border">
+              <div className="space-y-5">
                 <div>
-                  <label htmlFor="name" className="block font-display text-xs text-foreground mb-2">
-                    YOUR NAME
+                  <label htmlFor="name" className="block font-display text-sm text-foreground mb-2 font-semibold uppercase tracking-wide">
+                    Your Name
                   </label>
                   <input
                     type="text"
@@ -150,14 +149,14 @@ export const Contact = () => {
                     value={formState.name}
                     onChange={(e) => setFormState({ ...formState, name: e.target.value })}
                     required
-                    className="w-full px-4 py-3 bg-muted text-foreground rounded-lg border border-border font-body focus:outline-none focus:ring-2 focus:ring-primary transition-all"
+                    className="w-full px-4 py-3 bg-input text-foreground rounded-md border border-border font-body focus:outline-none focus:ring-2 focus:ring-ring transition-all"
                     placeholder="John Doe"
                   />
                 </div>
 
                 <div>
-                  <label htmlFor="email" className="block font-display text-xs text-foreground mb-2">
-                    YOUR EMAIL
+                  <label htmlFor="email" className="block font-display text-sm text-foreground mb-2 font-semibold uppercase tracking-wide">
+                    Your Email
                   </label>
                   <input
                     type="email"
@@ -165,14 +164,14 @@ export const Contact = () => {
                     value={formState.email}
                     onChange={(e) => setFormState({ ...formState, email: e.target.value })}
                     required
-                    className="w-full px-4 py-3 bg-muted text-foreground rounded-lg border border-border font-body focus:outline-none focus:ring-2 focus:ring-primary transition-all"
+                    className="w-full px-4 py-3 bg-input text-foreground rounded-md border border-border font-body focus:outline-none focus:ring-2 focus:ring-ring transition-all"
                     placeholder="john@example.com"
                   />
                 </div>
 
                 <div>
-                  <label htmlFor="message" className="block font-display text-xs text-foreground mb-2">
-                    YOUR MESSAGE
+                  <label htmlFor="message" className="block font-display text-sm text-foreground mb-2 font-semibold uppercase tracking-wide">
+                    Your Message
                   </label>
                   <textarea
                     id="message"
@@ -180,14 +179,14 @@ export const Contact = () => {
                     onChange={(e) => setFormState({ ...formState, message: e.target.value })}
                     required
                     rows={4}
-                    className="w-full px-4 py-3 bg-muted text-foreground rounded-lg border border-border font-body focus:outline-none focus:ring-2 focus:ring-primary transition-all resize-none"
-                    placeholder="Let's build something amazing..."
+                    className="w-full px-4 py-3 bg-input text-foreground rounded-md border border-border font-body focus:outline-none focus:ring-2 focus:ring-ring transition-all resize-none"
+                    placeholder="Let's build something together..."
                   />
                 </div>
 
                 <button
                   type="submit"
-                  className="w-full lego-btn bg-primary text-primary-foreground flex items-center justify-center gap-2"
+                  className="w-full lego-btn bg-accent text-accent-foreground flex items-center justify-center gap-2"
                 >
                   <Send size={16} />
                   Send Message
@@ -202,11 +201,11 @@ export const Contact = () => {
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
-          transition={{ delay: 0.5 }}
+          transition={{ delay: 0.4 }}
           className="text-center mt-16 pt-8 border-t border-border"
         >
           <p className="font-body text-muted-foreground text-sm">
-            Built with 🧱 by Krishna Chaturvedi
+            Built by Krishna Chaturvedi
           </p>
           <p className="font-body text-muted-foreground/60 text-xs mt-2">
             © 2025 All rights reserved
