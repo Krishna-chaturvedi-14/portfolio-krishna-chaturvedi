@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
 import { GraduationCap, MapPin, Calendar, Sparkles } from 'lucide-react';
 import { LegoStuds } from './LegoStuds';
+import { PersonalAvatar } from './avatars/PersonalAvatar';
 
 export const About = () => {
   return (
@@ -22,7 +23,7 @@ export const About = () => {
         </motion.div>
 
         <div className="grid md:grid-cols-2 gap-8 items-center">
-          {/* Left - Avatar/Image placeholder */}
+          {/* Left - Avatar/Image */}
           <motion.div
             initial={{ opacity: 0, x: -24 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -34,9 +35,7 @@ export const About = () => {
               <LegoStuds rows={2} cols={4} color="hsl(var(--primary-foreground))" className="opacity-20" />
               
               <div className="flex flex-col items-center pt-6">
-                <div className="w-28 h-28 rounded-lg bg-background/20 flex items-center justify-center mb-6">
-                  <span className="text-5xl">👨‍💻</span>
-                </div>
+                <PersonalAvatar size="md" className="mb-6" />
                 
                 <h3 className="font-display text-lg text-primary-foreground mb-2 font-semibold">Krishna Chaturvedi</h3>
                 <p className="font-body text-primary-foreground/80 text-center">ML Engineer & Data Scientist</p>
@@ -49,8 +48,16 @@ export const About = () => {
             </div>
 
             {/* Decorative blocks */}
-            <div className="absolute -top-3 -right-3 w-10 h-6 bg-accent rounded-md shadow-lego hidden md:block" />
-            <div className="absolute -bottom-3 -left-3 w-12 h-8 bg-success rounded-md shadow-lego hidden md:block" />
+            <motion.div 
+              animate={{ y: [0, -4, 0] }}
+              transition={{ duration: 3, repeat: Infinity, ease: 'easeInOut' }}
+              className="absolute -top-3 -right-3 w-10 h-6 bg-accent rounded-md shadow-lego hidden md:block" 
+            />
+            <motion.div 
+              animate={{ y: [0, 4, 0] }}
+              transition={{ duration: 3.5, repeat: Infinity, ease: 'easeInOut', delay: 0.5 }}
+              className="absolute -bottom-3 -left-3 w-12 h-8 bg-success rounded-md shadow-lego hidden md:block" 
+            />
           </motion.div>
 
           {/* Right - Content */}
@@ -63,9 +70,13 @@ export const About = () => {
           >
             <div className="bg-card rounded-lg p-6 shadow-card border border-border">
               <div className="flex items-start gap-4">
-                <div className="w-11 h-11 rounded-md bg-accent/10 flex items-center justify-center flex-shrink-0">
+                <motion.div 
+                  animate={{ rotate: [0, 5, -5, 0] }}
+                  transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
+                  className="w-11 h-11 rounded-md bg-accent/10 flex items-center justify-center flex-shrink-0"
+                >
                   <Sparkles className="text-accent" size={22} />
-                </div>
+                </motion.div>
                 <div>
                   <h4 className="font-display text-sm text-foreground mb-2 font-semibold uppercase tracking-wide">Who I Am</h4>
                   <p className="font-body text-muted-foreground leading-relaxed">
@@ -79,9 +90,13 @@ export const About = () => {
 
             <div className="bg-card rounded-lg p-6 shadow-card border border-border">
               <div className="flex items-start gap-4">
-                <div className="w-11 h-11 rounded-md bg-success/10 flex items-center justify-center flex-shrink-0">
+                <motion.div 
+                  animate={{ y: [0, -2, 0] }}
+                  transition={{ duration: 2.5, repeat: Infinity, ease: 'easeInOut' }}
+                  className="w-11 h-11 rounded-md bg-success/10 flex items-center justify-center flex-shrink-0"
+                >
                   <GraduationCap className="text-success" size={22} />
-                </div>
+                </motion.div>
                 <div>
                   <h4 className="font-display text-sm text-foreground mb-2 font-semibold uppercase tracking-wide">Education</h4>
                   <p className="font-body font-medium text-foreground">B.Tech in Computer Science</p>
@@ -105,7 +120,8 @@ export const About = () => {
                   whileInView={{ opacity: 1, scale: 1 }}
                   viewport={{ once: true }}
                   transition={{ delay: 0.4 + i * 0.08 }}
-                  className="px-3 py-1.5 bg-muted text-foreground rounded-md font-mono text-sm shadow-sm"
+                  whileHover={{ scale: 1.05, y: -2 }}
+                  className="px-3 py-1.5 bg-muted text-foreground rounded-md font-mono text-sm shadow-sm cursor-default"
                 >
                   {skill}
                 </motion.span>

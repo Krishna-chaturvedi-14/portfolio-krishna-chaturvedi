@@ -1,7 +1,5 @@
-import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { PlayerCard } from './PlayerCard';
-import { DetailModal } from './DetailModal';
 import { TrendingUp, Timer } from 'lucide-react';
 
 interface Project {
@@ -56,8 +54,6 @@ const projects: Project[] = [
 ];
 
 export const Projects = () => {
-  const [selectedProject, setSelectedProject] = useState<Project | null>(null);
-
   return (
     <div className="min-h-screen flex items-center justify-center px-4 py-24">
       <div className="max-w-5xl mx-auto w-full">
@@ -89,8 +85,15 @@ export const Projects = () => {
               shortDescription={project.shortDescription}
               metadata={[project.status, project.date.split(' - ')[0]]}
               color={project.color}
-              onViewDetails={() => setSelectedProject(project)}
               delay={index}
+              avatarType="web"
+              fullDescription={project.description}
+              details={project.details}
+              technologies={project.technologies}
+              detailMetadata={[
+                { label: 'Status', value: project.status },
+                { label: 'Timeline', value: project.date },
+              ]}
             />
           ))}
         </div>
@@ -109,22 +112,6 @@ export const Projects = () => {
             </p>
           </div>
         </motion.div>
-
-        {/* Detail Modal */}
-        <DetailModal
-          isOpen={!!selectedProject}
-          onClose={() => setSelectedProject(null)}
-          title={selectedProject?.title || ''}
-          icon={selectedProject?.icon}
-          description={selectedProject?.description || ''}
-          details={selectedProject?.details || []}
-          technologies={selectedProject?.technologies || []}
-          color={selectedProject?.color || 'red'}
-          metadata={[
-            { label: 'Status', value: selectedProject?.status || '' },
-            { label: 'Timeline', value: selectedProject?.date || '' },
-          ]}
-        />
       </div>
     </div>
   );
