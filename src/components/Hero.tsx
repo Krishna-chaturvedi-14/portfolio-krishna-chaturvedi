@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
 import { ArrowDown, Mail, Briefcase } from 'lucide-react';
 import { LegoStuds } from './LegoStuds';
+import { PersonalAvatar } from './avatars/PersonalAvatar';
 
 export const Hero = () => {
   const scrollToSection = (id: string) => {
@@ -42,6 +43,16 @@ export const Hero = () => {
           className="relative bg-card rounded-lg p-8 md:p-12 shadow-lego border border-border"
         >
           <LegoStuds rows={1} cols={6} color="hsl(var(--accent))" className="opacity-30" />
+
+          {/* Personal Avatar */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ delay: 0.15, duration: 0.5 }}
+            className="flex justify-center mb-6"
+          >
+            <PersonalAvatar size="lg" />
+          </motion.div>
 
           {/* Greeting */}
           <motion.div

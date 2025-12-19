@@ -1,7 +1,5 @@
-import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { PlayerCard } from './PlayerCard';
-import { DetailModal } from './DetailModal';
 import { Code, Database, Wrench, Brain, BarChart3, Sparkles } from 'lucide-react';
 
 interface Skill {
@@ -79,8 +77,6 @@ const skills: Skill[] = [
 ];
 
 export const Skills = () => {
-  const [selectedSkill, setSelectedSkill] = useState<Skill | null>(null);
-
   return (
     <div className="min-h-screen flex items-center justify-center px-4 py-24">
       <div className="max-w-6xl mx-auto w-full">
@@ -112,25 +108,16 @@ export const Skills = () => {
               shortDescription={skill.shortDescription}
               metadata={[skill.category, `${skill.items.length} items`]}
               color={skill.color}
-              onViewDetails={() => setSelectedSkill(skill)}
               delay={index}
+              avatarType="web"
+              fullDescription={skill.description}
+              technologies={skill.items}
+              detailMetadata={[
+                { label: 'Category', value: skill.category },
+              ]}
             />
           ))}
         </div>
-
-        {/* Detail Modal */}
-        <DetailModal
-          isOpen={!!selectedSkill}
-          onClose={() => setSelectedSkill(null)}
-          title={selectedSkill?.title || ''}
-          icon={selectedSkill?.icon}
-          description={selectedSkill?.description || ''}
-          technologies={selectedSkill?.items || []}
-          color={selectedSkill?.color || 'red'}
-          metadata={[
-            { label: 'Category', value: selectedSkill?.category || '' },
-          ]}
-        />
       </div>
     </div>
   );

@@ -1,7 +1,5 @@
-import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { PlayerCard } from './PlayerCard';
-import { DetailModal } from './DetailModal';
 import { Building2, Users, Camera, Award } from 'lucide-react';
 
 interface ExperienceItem {
@@ -93,8 +91,6 @@ const experiences: ExperienceItem[] = [
 ];
 
 export const Experience = () => {
-  const [selectedItem, setSelectedItem] = useState<ExperienceItem | null>(null);
-
   return (
     <div className="min-h-screen flex items-center justify-center px-4 py-24">
       <div className="max-w-6xl mx-auto w-full">
@@ -126,28 +122,19 @@ export const Experience = () => {
               shortDescription={item.shortDescription}
               metadata={[item.organization, item.date.split(' - ')[0]]}
               color={item.color}
-              onViewDetails={() => setSelectedItem(item)}
               delay={index}
+              avatarType="control"
+              fullDescription={item.description}
+              details={item.details}
+              technologies={item.technologies}
+              detailMetadata={[
+                { label: 'Organization', value: item.organization },
+                { label: 'Duration', value: item.date },
+                { label: 'Location', value: item.location },
+              ]}
             />
           ))}
         </div>
-
-        {/* Detail Modal */}
-        <DetailModal
-          isOpen={!!selectedItem}
-          onClose={() => setSelectedItem(null)}
-          title={selectedItem?.title || ''}
-          icon={selectedItem?.icon}
-          description={selectedItem?.description || ''}
-          details={selectedItem?.details || []}
-          technologies={selectedItem?.technologies || []}
-          color={selectedItem?.color || 'red'}
-          metadata={[
-            { label: 'Organization', value: selectedItem?.organization || '' },
-            { label: 'Duration', value: selectedItem?.date || '' },
-            { label: 'Location', value: selectedItem?.location || '' },
-          ]}
-        />
       </div>
     </div>
   );
