@@ -261,26 +261,6 @@ export const Hero = () => {
         </motion.div>
       </div>
 
-      {/* Scroll indicator - Bottom */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 4.2, duration: 0.5 }}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10"
-      >
-        <motion.button
-          animate={{ y: [0, 8, 0] }}
-          transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
-          onClick={() => scrollToSection('about')}
-          className="flex flex-col items-center gap-2 text-muted-foreground hover:text-foreground transition-colors group"
-          aria-label="Scroll to about section"
-        >
-          <span className="text-xs font-mono tracking-wider opacity-60 group-hover:opacity-100 transition-opacity">SCROLL</span>
-          <div className="p-2 rounded-full border border-border/50 group-hover:border-accent/50 transition-colors">
-            <ArrowDown size={18} />
-          </div>
-        </motion.button>
-      </motion.div>
     </div>
   );
 };
