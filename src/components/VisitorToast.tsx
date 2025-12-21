@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { supabase } from '@/integrations/supabase/client';
 
 const STORAGE_KEY = 'visitor_toast_shown';
 
@@ -16,16 +17,14 @@ export const VisitorToast = () => {
 
     const fetchVisitorCount = async () => {
       try {
-        const response = await fetch('https://api.countapi.xyz/hit/krishna-chaturvedi/portfolio');
+        const { data, error: fnError } = await supabase.functions.invoke('visitor');
         
-        if (!response.ok) {
-          throw new Error('API request failed');
+        if (fnError) {
+          throw new Error(fnError.message);
         }
         
-        const data = await response.json();
-        
-        if (data.value) {
-          setVisitorCount(data.value);
+        if (data?.count) {
+          setVisitorCount(data.count);
           setIsVisible(true);
           sessionStorage.setItem(STORAGE_KEY, 'true');
 
@@ -34,7 +33,7 @@ export const VisitorToast = () => {
             setIsVisible(false);
           }, 3500);
         } else {
-          throw new Error('No value in response');
+          throw new Error('No count in response');
         }
       } catch (err) {
         // Show error state for debugging
@@ -67,7 +66,7 @@ export const VisitorToast = () => {
             left-1/2 md:left-auto -translate-x-1/2 md:translate-x-0"
         >
           <div 
-            className="px-5 py-3.5 rounded-lg
+            className="px-5 py-3.5 rounded-[0.375rem]
               bg-card/80 backdrop-blur-md
               border border-border/40
               shadow-lg shadow-black/20"
@@ -78,8 +77,8 @@ export const VisitorToast = () => {
               </p>
             ) : (
               <p className="text-sm font-medium text-foreground/90 tracking-wide">
-                You are visitor{' '}
-                <span className="text-accent font-semibold">
+                Welcome — you are visitor{' '}
+                <span className="font-mono text-accent font-semibold">
                   #{visitorCount?.toLocaleString()}
                 </span>
               </p>
