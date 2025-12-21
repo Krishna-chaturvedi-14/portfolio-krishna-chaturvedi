@@ -6,6 +6,7 @@ const STORAGE_KEY = 'visitor_toast_shown';
 export const VisitorToast = () => {
   const [visitorCount, setVisitorCount] = useState<number | null>(null);
   const [isVisible, setIsVisible] = useState(false);
+  const [error, setError] = useState(false);
 
   useEffect(() => {
     // Check if toast was already shown this session
@@ -16,6 +17,11 @@ export const VisitorToast = () => {
     const fetchVisitorCount = async () => {
       try {
         const response = await fetch('https://api.countapi.xyz/hit/krishna-chaturvedi/portfolio');
+        
+        if (!response.ok) {
+          throw new Error('API request failed');
+        }
+        
         const data = await response.json();
         
         if (data.value) {
@@ -27,10 +33,20 @@ export const VisitorToast = () => {
           setTimeout(() => {
             setIsVisible(false);
           }, 3500);
+        } else {
+          throw new Error('No value in response');
         }
-      } catch (error) {
-        // Silently fail - don't show toast if API fails
-        console.log('Visitor count unavailable');
+      } catch (err) {
+        // Show error state for debugging
+        console.log('Visitor count unavailable:', err);
+        setError(true);
+        setIsVisible(true);
+        sessionStorage.setItem(STORAGE_KEY, 'true');
+
+        // Auto-dismiss after 3.5 seconds
+        setTimeout(() => {
+          setIsVisible(false);
+        }, 3500);
       }
     };
 
@@ -39,7 +55,7 @@ export const VisitorToast = () => {
 
   return (
     <AnimatePresence>
-      {isVisible && visitorCount && (
+      {isVisible && (
         <motion.div
           initial={{ opacity: 0, y: 20, scale: 0.95 }}
           animate={{ opacity: 1, y: 0, scale: 1 }}
@@ -56,12 +72,18 @@ export const VisitorToast = () => {
               border border-border/40
               shadow-lg shadow-black/20"
           >
-            <p className="text-sm font-medium text-foreground/90 tracking-wide">
-              You are visitor{' '}
-              <span className="text-accent font-semibold">
-                #{visitorCount.toLocaleString()}
-              </span>
-            </p>
+            {error ? (
+              <p className="text-sm font-medium text-muted-foreground tracking-wide">
+                Visitor count unavailable
+              </p>
+            ) : (
+              <p className="text-sm font-medium text-foreground/90 tracking-wide">
+                You are visitor{' '}
+                <span className="text-accent font-semibold">
+                  #{visitorCount?.toLocaleString()}
+                </span>
+              </p>
+            )}
           </div>
         </motion.div>
       )}
