@@ -19,8 +19,6 @@ Interactive portfolio website showcasing my work as a
 - Custom LEGO cursor
 - Responsive, single-scroll layout
 
-## Live Website
-https://portfolio-krishna-chaturvedi.lovable.app/
 
 ## Run Locally
 ```bash
