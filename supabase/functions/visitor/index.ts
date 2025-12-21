@@ -12,8 +12,9 @@ serve(async (req) => {
   }
 
   try {
-    const redisUrl = Deno.env.get('UPSTASH_REDIS_REST_URL');
-    const redisToken = Deno.env.get('UPSTASH_REDIS_REST_TOKEN');
+    // Strip any surrounding quotes from env vars (in case they were stored with quotes)
+    const redisUrl = Deno.env.get('UPSTASH_REDIS_REST_URL')?.replace(/^["']|["']$/g, '');
+    const redisToken = Deno.env.get('UPSTASH_REDIS_REST_TOKEN')?.replace(/^["']|["']$/g, '');
 
     if (!redisUrl || !redisToken) {
       console.error('Missing Upstash Redis credentials');
@@ -23,8 +24,11 @@ serve(async (req) => {
       );
     }
 
+    const url = `${redisUrl}/incr/portfolio:visits`;
+    console.log('Calling Upstash URL:', url);
+
     // Use Upstash Redis REST API to increment the counter
-    const response = await fetch(`${redisUrl}/incr/portfolio:visits`, {
+    const response = await fetch(url, {
       method: 'POST',
       headers: {
         'Authorization': `Bearer ${redisToken}`,
