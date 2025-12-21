@@ -3,6 +3,9 @@
 Interactive portfolio website showcasing my work as a
 **Machine Learning Engineer & Data Scientist**.
 
+🚀 Live Demo: https://portfolio-krishna-chaturvedi.vercel.app/
+
+
 ## Tech Stack
 - React
 - TypeScript
