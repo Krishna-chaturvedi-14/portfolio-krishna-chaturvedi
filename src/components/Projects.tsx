@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
 import { PlayerCard } from './PlayerCard';
-import { TrendingUp, Timer } from 'lucide-react';
+import { TrendingUp, Timer, Layers } from 'lucide-react';
 
 interface Project {
   id: string;
@@ -16,6 +16,23 @@ interface Project {
 }
 
 const projects: Project[] = [
+  {
+    id: 'stackd',
+    title: 'Stackd',
+    icon: <Layers />,
+    shortDescription: 'Turn your resume into a live portfolio website',
+    description: 'Stackd allows developers to transform their resume into a stunning, shareable personal website in seconds, visualizing their tech stack and projects with ease.',
+    details: [
+      'Instantly generate a personal website from your resume',
+      'Visualize your tech stack with interactive elements',
+      'Shareable portfolio link for recruiters and peers',
+      'Dashboard for managing projects and skills'
+    ],
+    technologies: ['React', 'Tailwind CSS', 'Framer Motion', 'AI'],
+    color: 'green',
+    date: 'Feb 2026',
+    status: 'Live'
+  },
   {
     
   id: 'kpi-forecasting',
