@@ -2,7 +2,7 @@ import { motion } from 'framer-motion';
 import { Mail, Phone, MapPin, Linkedin, Github, Send } from 'lucide-react';
 import { LegoStuds } from './LegoStuds';
 import { useState } from 'react';
-import { toast } from '@/hooks/use-toast';
+
 
 const socialLinks = [
   {
@@ -28,14 +28,7 @@ const socialLinks = [
 export const Contact = () => {
   const [formState, setFormState] = useState({ name: '', email: '', message: '' });
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    toast({
-      title: "Message sent!",
-      description: "Thanks for reaching out. I'll get back to you soon.",
-    });
-    setFormState({ name: '', email: '', message: '' });
-  };
+
 
   return (
     <div className="min-h-screen flex items-center justify-center px-4 py-24">
@@ -69,7 +62,7 @@ export const Contact = () => {
             {/* Contact Card */}
             <div className="relative bg-success rounded-lg p-8 shadow-lego text-success-foreground">
               <LegoStuds rows={1} cols={4} color="rgba(255,255,255,0.2)" />
-              
+
               <div className="pt-4 space-y-5">
                 <h3 className="font-display text-lg mb-6 font-semibold">Contact Info</h3>
 
@@ -137,7 +130,7 @@ export const Contact = () => {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
           >
-            <form onSubmit={handleSubmit} className="bg-card rounded-lg p-8 shadow-card border border-border">
+            <form action="mailto:krishna14chaturvedi@gmail.com" method="POST" encType="text/plain" className="bg-card rounded-lg p-8 shadow-card border border-border">
               <div className="space-y-5">
                 <div>
                   <label htmlFor="name" className="block font-display text-sm text-foreground mb-2 font-semibold uppercase tracking-wide">
