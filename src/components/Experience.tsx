@@ -38,6 +38,26 @@ const experiences: ExperienceItem[] = [
     type: 'work',
   },
   {
+    id: 'nocap-foods',
+    title: 'AI / Product Engineering',
+    organization: 'NoCap Foods',
+    icon: <Building2 />,
+    shortDescription: 'AI analytics & full-stack dev',
+    description: 'Designed and documented ContentScore, an AI-powered influencer analytics system, and rebuilt the company website with improved UX and performance.',
+    details: [
+      'Rebuilt company website with improved UX and performance',
+      'Designed and documented ContentScore — an AI-powered influencer analytics system',
+      'Built content scoring logic to evaluate creators using engagement + relevance metrics',
+      'Developed scraping workflows to track product availability across pincodes (Instamart)',
+      'Contributed to system design including PRD, TRD, and scalable architecture'
+    ],
+    technologies: ['Next.js', 'Supabase', 'Python', 'OpenAI API'],
+    color: 'red',
+    date: 'Feb 2026 - Apr 2026',
+    location: 'Remote',
+    type: 'work',
+  },
+  {
     id: 'ieee',
     title: 'Head of Media & Coverage',
     organization: 'IEEE SB MUJ',
