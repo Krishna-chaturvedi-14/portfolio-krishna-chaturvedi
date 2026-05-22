@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
 import { PlayerCard } from './PlayerCard';
-import { TrendingUp, Timer, Layers } from 'lucide-react';
+import { TrendingUp, Timer, Layers, Activity, Lightbulb } from 'lucide-react';
 
 interface Project {
   id: string;
@@ -71,8 +71,41 @@ const projects: Project[] = [
   color: 'blue',
   date: 'Jul 2025',
   status: 'Completed'
-}
-
+  },
+  {
+    id: 'netwatch',
+    title: 'NetWatch',
+    icon: <Activity />,
+    shortDescription: 'Real-time anomaly detection for telecom towers',
+    description: 'Designed and deployed an ensemble machine learning pipeline with real-time streaming to detect anomalies in telecom tower infrastructure.',
+    details: [
+      'Built a data generator simulating telecom tower KPI data and publishing to Kafka',
+      'Configured Confluent Kafka and Zookeeper for high-throughput message streaming',
+      'Deployed a FastAPI backend running dual-model inference (PyTorch Autoencoder & Isolation Forest)',
+      'Built a Next.js dashboard that streams live anomalies via Server-Sent Events (SSE)'
+    ],
+    technologies: ['Python', 'FastAPI', 'PyTorch', 'Kafka', 'Next.js', 'React'],
+    color: 'orange',
+    date: 'Apr 2026',
+    status: 'Completed'
+  },
+  {
+    id: 'ideaforge',
+    title: 'IdeaForge',
+    icon: <Lightbulb />,
+    shortDescription: 'AI Product Idea Generator SaaS',
+    description: 'Developed a complete SaaS web application that uses AI to generate innovative product ideas and strategic blueprints.',
+    details: [
+      'Built responsive dashboard UI with Vite, React, and Tailwind CSS',
+      'Integrated AI models to generate comprehensive strategic advice including distribution and unfair advantages',
+      'Designed a modern dark theme and complex routing architecture for scalability',
+      'Enhanced user experience with tailored AI prompts and typography improvements'
+    ],
+    technologies: ['React', 'TypeScript', 'Tailwind CSS', 'Vite', 'AI'],
+    color: 'yellow',
+    date: 'Mar 2026',
+    status: 'Completed'
+  }
 ];
 
 export const Projects = () => {
