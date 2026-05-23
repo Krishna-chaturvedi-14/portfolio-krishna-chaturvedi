@@ -137,7 +137,10 @@ export const PlayerCard = ({
             </motion.div>
 
             {/* Title */}
-            <h3 className="font-display text-sm text-center mb-2 font-semibold leading-snug">{title}</h3>
+            <div className="flex items-center justify-center gap-2 mb-2">
+              {icon && <div className="opacity-80">{icon}</div>}
+              <h3 className="font-display text-sm text-center font-semibold leading-snug">{title}</h3>
+            </div>
 
             {/* Hover Content - Slides in from below */}
             <AnimatePresence>
